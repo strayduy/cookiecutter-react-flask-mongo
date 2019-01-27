@@ -5,6 +5,9 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import store from './store';
 
+// Router
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
 // Style
 import './App.scss';
 
@@ -16,7 +19,13 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <ExampleComponent greeting="Hello there" />
+          <BrowserRouter>
+            <Switch>
+              <Route exact
+                     path="/"
+                     render={props => <ExampleComponent {...props} greeting="Hello there" />} />
+            </Switch>
+          </BrowserRouter>
         </div>
       </Provider>
     );
